@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+
 
 public class Button : MonoBehaviour, IApribile
 {
@@ -34,5 +37,12 @@ public class Button : MonoBehaviour, IApribile
     public void Apri()
     {
         door.transform.position = new Vector3(0, -10, 0);
+        StartCoroutine(ReturnToMenu());
+    }
+
+    private IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Menu");
     }
 }
